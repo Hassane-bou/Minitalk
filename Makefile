@@ -20,8 +20,6 @@ NAME_CLIENT =client
 NAMEB_SERVER = server_bonus
 NAMEB_CLIENT = client_bonus
 
-NAME = minitalk.a
-
 
 all: $(NAME_SERVER) $(NAME_CLIENT)
 
@@ -45,7 +43,7 @@ clean:
 	@rm -f $(OBJS_BONUS)
 
 fclean: clean
-	@rm -f $(NAME_CLIENT) $(NAME_SERVER) $(NAMEB_CLIENT) $(NAMEB_SERVER) $(NAME) 
+	@rm -f $(NAME_CLIENT) $(NAME_SERVER) $(NAMEB_CLIENT) $(NAMEB_SERVER)
 
 re: fclean all
 

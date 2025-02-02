@@ -6,7 +6,7 @@
 /*   By: haboucha <haboucha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:16:05 by haboucha          #+#    #+#             */
-/*   Updated: 2025/02/01 12:13:58 by haboucha         ###   ########.fr       */
+/*   Updated: 2025/02/02 18:39:30 by haboucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	gerer_signales(int signe, siginfo_t *inf, void *p)
 {
 	static int	pid;
-	static int	bit_count = 0;
-	static char	stocker = 0;
+	static int	bit_count;
+	static char	stocker;
 
 	(void)p;
 	if (pid != inf->si_pid)
@@ -33,7 +33,10 @@ void	gerer_signales(int signe, siginfo_t *inf, void *p)
 	if (bit_count == 8)
 	{
 		if (stocker == '\0')
+		{
 			ft_printf("\n");
+			// ft_printf("%d\n",pid);
+		}
 		else
 			ft_printf("%c", stocker);
 		bit_count = 0;

@@ -6,7 +6,7 @@
 /*   By: haboucha <haboucha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 15:47:01 by haboucha          #+#    #+#             */
-/*   Updated: 2025/02/01 12:14:41 by haboucha         ###   ########.fr       */
+/*   Updated: 2025/02/01 12:59:57 by haboucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	char_to_binary(int PID, char c)
 			kill(PID, SIGUSR1);
 		else
 			kill(PID, SIGUSR2);
-		usleep(100);
+		usleep(200);
 		i--;
 	}
 }

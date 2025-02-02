@@ -6,7 +6,7 @@
 /*   By: haboucha <haboucha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 15:47:01 by haboucha          #+#    #+#             */
-/*   Updated: 2025/01/31 20:22:24 by haboucha         ###   ########.fr       */
+/*   Updated: 2025/02/02 20:00:13 by haboucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	ft_atoi(char *str)
 	return (res * s);
 }
 
+
 void	char_to_binary(int PID, char c)
 {
 	int	i;
@@ -48,7 +49,7 @@ void	char_to_binary(int PID, char c)
 			kill(PID, SIGUSR1);
 		else
 			kill(PID, SIGUSR2);
-		usleep(100);
+		usleep(200);
 		i--;
 	}
 }
