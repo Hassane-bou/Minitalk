@@ -6,11 +6,12 @@
 /*   By: haboucha <haboucha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 15:47:01 by haboucha          #+#    #+#             */
-/*   Updated: 2025/02/02 20:46:57 by haboucha         ###   ########.fr       */
+/*   Updated: 2025/03/01 18:21:46 by haboucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+#include <stdlib.h>
 
 int	ft_atoi(char *str)
 {
@@ -41,15 +42,21 @@ int	ft_atoi(char *str)
 void	char_to_binary(int PID, char c)
 {
 	int	i;
+	int check;
 
 	i = 7;
 	while (i >= 0)
 	{
 		if ((c >> i) & 1)
-			kill(PID, SIGUSR1);
+			check = kill(PID, SIGUSR1);
 		else
-			kill(PID, SIGUSR2);
-		usleep(200);
+			check = kill(PID, SIGUSR2);
+		if(check == -1){
+			write(2, "hHHHH", 5);
+			exit(1);
+		}
+			
+		usleep(400);
 		i--;
 	}
 }
@@ -60,18 +67,23 @@ int	main(int ac, char **av)
 	char	*message;
 	int		pid;
 
-	i = 0;
 	if (ac != 3)
 	{
 		ft_printf("Usage: ./client <PID> <Message>\n");
 		return (1);
 	}
+	i = 0;
 	pid = ft_atoi(av[1]);
-	if (pid <= 0)
+	while(av[1][i])
 	{
-		ft_printf("PID_INVALID\n");
-		return (1);
+		if (pid <= 0 || ((av[1][i] >= 58 && av[1][i] <= 126) || (av[1][i] >= 32 && av[1][i] <= 47) ))
+		{
+			ft_printf("PID_INVALID\n");
+			return (1);
+		}
+	i++;
 	}
+	i =0;
 	message = av[2];
 	if (ac == 3)
 	{
